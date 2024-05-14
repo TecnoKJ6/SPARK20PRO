@@ -8,67 +8,55 @@
 
 LOCAL_PATH := device/tecno/KJ6
 
-# Dynamic Partitions
+# Treble
+BOARD_VNDK_VERSION := current
+
+# Dynamic
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 
-# Virtual A/B
-ENABLE_VIRTUAL_AB := true
-$(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota.mk)
-
-# Update Engine & Update Verifier 
-PRODUCT_PACKAGES += \
-    update_engine \
-    update_verifier \
-    update_engine_sideload
-
+# A/B
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
-    POSTINSTALL_PATH_system=system/bin/otapreopt_script \
+    POSTINSTALL_PATH_system=system/bin/mtk_plpath_utils \
     FILESYSTEM_TYPE_system=erofs \
     POSTINSTALL_OPTIONAL_system=true
 
-AB_OTA_POSTINSTALL_CONFIG += \
-    RUN_POSTINSTALL_vendor=true \
-    POSTINSTALL_PATH_vendor=bin/checkpoint_gc \
-    FILESYSTEM_TYPE_vendor=erofs \
-    POSTINSTALL_OPTIONAL_vendor=true
-
-PRODUCT_PACKAGES += \
-    otapreopt_script \
-    cppreopts.sh
-
 # Boot control HAL
 PRODUCT_PACKAGES += \
-    android.hardware.boot@1.2-impl \
-    android.hardware.boot@1.2-impl.recovery \
-    android.hardware.boot@1.2-service
+    android.hardware.boot@1.2-mtkimpl \
+    android.hardware.boot@1.2-mtkimpl.recovery
 
-PRODUCT_PACKAGES_DEBUG += \
-    bootctrl 
-
+# Health
 PRODUCT_PACKAGES += \
-    bootctrl.mt6768 \
-    bootctrl.mt6768.recovery
-
-# Soong
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    android.hardware.health@2.1-impl \
+    android.hardware.health@2.1-service
 
 # Fastbootd
 PRODUCT_PACKAGES += \
     android.hardware.fastboot@1.1-impl-mock \
     fastbootd
+    
+PRODUCT_PACKAGES_DEBUG += \
+    bootctrl \
+    update_engine_client
 
-# Health HAL
+PRODUCT_PACKAGES := \
+    bootctrl.mt6789 \
+    libgptutils \
+    libz \
+    libcutils
+
 PRODUCT_PACKAGES += \
-    android.hardware.health@2.1-impl \
-    android.hardware.health@2.1-service
+    otapreopt_script \
+    cppreopts.sh \
+    update_engine \
+    update_verifier \
+    update_engine_sideload
 
-# Recovery
-TARGET_RECOVERY_DEVICE_MODULES += \
-    libion \
-    libxml2
+# Mtk plpath utils
+PRODUCT_PACKAGES += \
+    mtk_plpath_utils \
+    mtk_plpath_utils.recovery
 
-RECOVERY_LIBRARY_SOURCE_FILES += \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libion.so \
-    $(TARGET_OUT_SHARED_LIBRARIES)/libxml2.so
+# Soong namespaces
+PRODUCT_SOONG_NAMESPACES += $(DEVICE_PATH)
