@@ -133,12 +133,33 @@ PLATFORM_VERSION := 13
 PLATFORM_VERSION_LAST_STABLE := $(PLATFORM_VERSION)
 PLATFORM_SECURITY_PATCH := 2099-12-31
 
+# USB Configuration
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
+TW_HAS_MTP := true
+
+# USB OTG
+TW_USB_STORAGE := true
+
+# Support /data/media
+RECOVERY_SDCARD_ON_DATA := true
+
+# LOGCAT
+TARGET_USES_LOGD := true    
+TWRP_INCLUDE_LOGCAT := true
+
+# Format Use MKE2FS
+TARGET_USES_MKE2FS := true
+
 # TWRP Configuration
 TW_FRAMERATE := 60
 TW_Y_OFFSET := 106
 TW_H_OFFSET := -106
 TW_THEME := portrait_hdpi
 TW_DEFAULT_BRIGHTNESS := 1000
+TW_NO_SCREEN_BLANK := true
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_MAX_BRIGHTNESS := 2047
 TW_INCLUDE_FASTBOOTD := true
 TARGET_USES_LOGD := true
 TWRP_INCLUDE_LOGCAT := true
