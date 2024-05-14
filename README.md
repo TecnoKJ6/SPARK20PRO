@@ -1,10 +1,11 @@
-# Android device tree for TECNO TECNO KJ6 (TECNO-KJ6)
+# Android device tree for TECNO TECNO KJ6 (KJ6)
+working:
 
-```
-#
-# Copyright (C) 2024 The Android Open Source Project
-# Copyright (C) 2024 SebaUbuntu's TWRP device tree generator
-#
-# SPDX-License-Identifier: Apache-2.0
-#
-```
+mount
+sideload
+flashing
+wiping
+restoring
+backing up
+adb
+mtp
