@@ -9,6 +9,4 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/omni_KJ6.mk
 
 COMMON_LUNCH_CHOICES := \
-    omni_KJ6-user \
-    omni_KJ6-userdebug \
     omni_KJ6-eng
