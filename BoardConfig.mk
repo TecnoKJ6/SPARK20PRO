@@ -158,3 +158,15 @@ TW_SUPPORT_INPUT_AIDL_HAPTICS_FQNAME := "IVibrator/vibratorfeature"
 TW_CUSTOM_CPU_TEMP_PATH := "/sys/class/thermal/thermal_zone54/temp"
 TARGET_USE_CUSTOM_LUN_FILE_PATH := "/config/usb_gadget/g1/functions/mass_storage.usb0/lun.%d/file
 TW_BUILD_VERSION := A14
+
+# Treble
+PB_DISABLE_DEFAULT_TREBLE_COMP := true
+
+# Maintainer Flags
+MAINTAINER := 'kelvin'
+
+# Treble
+PB_DISABLE_DEFAULT_DM_VERITY := true
+
+# Disable AVB2.0
+PB_DISABLE_DEFAULT_PATCH_AVB2 := true
