@@ -218,7 +218,7 @@ TWRP_INCLUDE_LOGCAT := true
 TARGET_USES_LOGD := true
 
 # Maintainer/Version
-TW_DEVICE_VERSION := NINO
+TW_DEVICE_VERSION := Nino Kelvin
 
 # Use Toolbox instead of Busybox
 TW_USE_TOOLBOX := true
