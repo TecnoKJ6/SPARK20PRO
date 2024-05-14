@@ -114,7 +114,7 @@ BOARD_VNDK_VERSION := current
 BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_ROOT_EXTRA_FOLDERS += metadata
 
- Clang
+# Clang
 TARGET_KERNEL_CLANG_COMPILE := true
 
 # Vendor_boot recovery ramdisk
